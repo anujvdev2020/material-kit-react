@@ -68,7 +68,7 @@ export const SideNavItem = (props) => {
             lineHeight: '24px',
             whiteSpace: 'nowrap',
             ...(active && {
-              color: 'common.white'
+              color: 'neutral.grey'
             }),
             ...(disabled && {
               color: 'neutral.500'

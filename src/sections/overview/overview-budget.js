@@ -1,79 +1,76 @@
-import PropTypes from 'prop-types';
-import ArrowDownIcon from '@heroicons/react/24/solid/ArrowDownIcon';
-import ArrowUpIcon from '@heroicons/react/24/solid/ArrowUpIcon';
-import CurrencyDollarIcon from '@heroicons/react/24/solid/CurrencyDollarIcon';
-import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from '@mui/material';
+import PropTypes from "prop-types";
+import ArrowDownIcon from "@heroicons/react/24/solid/ArrowDownIcon";
+import ArrowUpIcon from "@heroicons/react/24/solid/ArrowUpIcon";
+import CurrencyDollarIcon from "@heroicons/react/24/solid/CurrencyDollarIcon";
+import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from "@mui/material";
+import uuid from "uuid";
+import { DragDropContext, Droppable, Dragabble } from "react-beautiful-dnd";
+import { useState } from "react";
 
 export const OverviewBudget = (props) => {
-  const { difference, positive = false, sx, value } = props;
+  const itemsFromBackend = [
+    { id: "101", content: "First Task" },
+    { id: "102", content: "Second Task" },
+  ];
 
+  const columnsFromBackend = {
+    "mcmslc": {
+      name: "TODO",
+      items: itemsFromBackend,
+    },
+  };
+  const { difference, positive = false, sx, value } = props;
+  const [columns, setColumns] = useState(columnsFromBackend);
   return (
-    <Card sx={sx}>
-      <CardContent>
-        <Stack
-          alignItems="flex-start"
-          direction="row"
-          justifyContent="space-between"
-          spacing={3}
-        >
-          <Stack spacing={1}>
-            <Typography
-              color="text.secondary"
-              variant="overline"
-            >
-              Budget
-            </Typography>
-            <Typography variant="h4">
-              {value}
-            </Typography>
-          </Stack>
-          <Avatar
-            sx={{
-              backgroundColor: 'error.main',
-              height: 56,
-              width: 56
+    <DragDropContext onDragEnd={(result) => console.log(result)}>
+      {Object.entries(columns).map(([id, column]) => {
+        return (
+          <Droppable droppableId={id}>
+            {(provided, snapshot) => {
+              return (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  style={{
+                    background: snapshot.isDraggingOver ? "lightblue" : "#F5F5F5",
+                    padding: 4,
+                    width: 250,
+                    minHeight: 500,
+                    borderRadius: "16px 16px 0px 0px",
+                  }}
+                >
+                  {column?.items?.map((item, index) => {
+                    return (
+                      <Dragabble index={index} key={item.id} draggableId={item.id}>
+                        {(provided, snapshot) => {
+                          return (
+                            <div
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              ref={provided.innerRef}
+                              // style={{
+                              //   margin: "0 0 8px 0",
+                              //   padding: 0,
+                              //   userSelect: "none",
+                              //   borderRadius: "16px",
+                              //   background: "#FFFFFF",
+                              //   minHeight: "50px",
+                              // }}
+                            >
+                             
+                            </div>
+                          );
+                        }}
+                      </Dragabble>
+                    );
+                  })}
+                </div>
+              );
             }}
-          >
-            <SvgIcon>
-              <CurrencyDollarIcon />
-            </SvgIcon>
-          </Avatar>
-        </Stack>
-        {difference && (
-          <Stack
-            alignItems="center"
-            direction="row"
-            spacing={2}
-            sx={{ mt: 2 }}
-          >
-            <Stack
-              alignItems="center"
-              direction="row"
-              spacing={0.5}
-            >
-              <SvgIcon
-                color={positive ? 'success' : 'error'}
-                fontSize="small"
-              >
-                {positive ? <ArrowUpIcon /> : <ArrowDownIcon />}
-              </SvgIcon>
-              <Typography
-                color={positive ? 'success.main' : 'error.main'}
-                variant="body2"
-              >
-                {difference}%
-              </Typography>
-            </Stack>
-            <Typography
-              color="text.secondary"
-              variant="caption"
-            >
-              Since last month
-            </Typography>
-          </Stack>
-        )}
-      </CardContent>
-    </Card>
+          </Droppable>
+        );
+      })}
+    </DragDropContext>
   );
 };
 
@@ -81,5 +78,5 @@ OverviewBudget.prototypes = {
   difference: PropTypes.number,
   positive: PropTypes.bool,
   sx: PropTypes.object,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
 };

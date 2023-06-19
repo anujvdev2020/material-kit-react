@@ -1,84 +1,69 @@
-import ChartBarIcon from '@heroicons/react/24/solid/ChartBarIcon';
-import CogIcon from '@heroicons/react/24/solid/CogIcon';
-import LockClosedIcon from '@heroicons/react/24/solid/LockClosedIcon';
-import ShoppingBagIcon from '@heroicons/react/24/solid/ShoppingBagIcon';
-import UserIcon from '@heroicons/react/24/solid/UserIcon';
-import UserPlusIcon from '@heroicons/react/24/solid/UserPlusIcon';
-import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
-import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
-import { SvgIcon } from '@mui/material';
+import ChartBarIcon from "@heroicons/react/24/solid/ChartBarIcon";
+import CogIcon from "@heroicons/react/24/solid/CogIcon";
+import LockClosedIcon from "@heroicons/react/24/solid/LockClosedIcon";
+import ShoppingBagIcon from "@heroicons/react/24/solid/ShoppingBagIcon";
+import UserIcon from "@heroicons/react/24/solid/UserIcon";
+import UserPlusIcon from "@heroicons/react/24/solid/UserPlusIcon";
+import UsersIcon from "@heroicons/react/24/solid/UsersIcon";
+import XCircleIcon from "@heroicons/react/24/solid/XCircleIcon";
+import { SvgIcon } from "@mui/material";
 
 export const items = [
   {
-    title: 'Overview',
-    path: '/',
-    icon: (
-      <SvgIcon fontSize="small">
-        <ChartBarIcon />
-      </SvgIcon>
-    )
+    title: "Home",
+    path: "/",
+    icon: <img src="/assets/category.png" height={"24px"} width={"24px"} />,
   },
   {
-    title: 'Customers',
-    path: '/customers',
+    title: "Messages",
+    path: "/messages",
     icon: (
-      <SvgIcon fontSize="small">
-        <UsersIcon />
-      </SvgIcon>
-    )
+      <img src="/assets/msgs.png" height={"24px"} width={"24px"} />
+    ),
   },
   {
-    title: 'Companies',
-    path: '/companies',
+    title: "Tasks",
+    path: "/companies",
     icon: (
-      <SvgIcon fontSize="small">
-        <ShoppingBagIcon />
-      </SvgIcon>
-    )
+      <img src="/assets/tasks.png" height={"24px"} width={"24px"} />
+    ),
   },
   {
-    title: 'Account',
-    path: '/account',
+    title: "Members",
+    path: "/account",
     icon: (
-      <SvgIcon fontSize="small">
-        <UserIcon />
-      </SvgIcon>
-    )
+      <img src="/assets/profile.png" height={"24px"} width={"24px"} />
+    ),
   },
   {
-    title: 'Settings',
-    path: '/settings',
+    title: "Settings",
+    path: "/settings",
     icon: (
-      <SvgIcon fontSize="small">
-        <CogIcon />
-      </SvgIcon>
-    )
+      <img src="/assets/settings.png" height={"24px"} width={"24px"} />
+    ),
   },
-  {
-    title: 'Login',
-    path: '/auth/login',
-    icon: (
-      <SvgIcon fontSize="small">
-        <LockClosedIcon />
-      </SvgIcon>
-    )
-  },
-  {
-    title: 'Register',
-    path: '/auth/register',
-    icon: (
-      <SvgIcon fontSize="small">
-        <UserPlusIcon />
-      </SvgIcon>
-    )
-  },
-  {
-    title: 'Error',
-    path: '/404',
-    icon: (
-      <SvgIcon fontSize="small">
-        <XCircleIcon />
-      </SvgIcon>
-    )
-  }
 ];
+
+export const tabs=[
+  {
+    title: "Mobile App",
+    path: "/",
+    icon: <img src="/assets/greencircle.png" height={"8px"} width={"8px"} />,
+  },
+  {
+    title: "Website Redesign",
+    path: "/",
+    icon: <img src="/assets/greencircle.png" height={"8px"} width={"8px"} />,
+  },
+  {
+    title: "Design System",
+    path: "/",
+    icon: <img src="/assets/greencircle.png" height={"8px"} width={"8px"} />,
+  },
+  {
+    title: "Wireframes",
+    path: "/",
+    icon: <img src="/assets/greencircle.png" height={"8px"} width={"8px"} />,
+  },
+];
+

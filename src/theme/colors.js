@@ -21,7 +21,8 @@ export const neutral = {
   600: '#4D5761',
   700: '#2F3746',
   800: '#1C2536',
-  900: '#111927'
+  900: '#111927',
+  grey:"#787486"
 };
 
 export const indigo = withAlphas({
