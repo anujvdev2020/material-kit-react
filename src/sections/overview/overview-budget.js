@@ -25,7 +25,7 @@ export const OverviewBudget = (props) => {
     <DragDropContext onDragEnd={(result) => console.log(result)}>
       {Object.entries(columns).map(([id, column]) => {
         return (
-          <Droppable droppableId={id}>
+          <Droppable droppableId={id} key={id}>
             {(provided, snapshot) => {
               return (
                 <div

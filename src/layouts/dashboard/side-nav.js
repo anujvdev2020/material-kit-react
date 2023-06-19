@@ -129,9 +129,9 @@ export const SideNav = (props) => {
             <img src="/assets/addsquare.png" height={"16px"} width={"16px"} />
           </Box>
 
-          {tabs.map((item) => {
+          {tabs.map((item,index) => {
             return (
-              <Box
+              <Box key={index}
                 sx={{
                   pl: "16px",
                   pr: "16px",
